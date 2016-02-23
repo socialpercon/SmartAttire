@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,13 +14,36 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="com.andersbuck.smartattire.MainActivity">
 
-
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/welcome"
         android:id="@+id/textWelcome"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal" />
-</LinearLayout>
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:text="@string/find_outfit"
+        android:id="@+id/btnFindOutfit"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:textSize="60sp"
+        android:textStyle="bold"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To Manage"
+        android:id="@+id/button"
+        android:layout_below="@+id/btnFindOutfit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:onClick="navToManage"/>
+
+
+</RelativeLayout>

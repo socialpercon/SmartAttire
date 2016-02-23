@@ -5,12 +5,20 @@
     <!-- Menu Names -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
 
-    <!-- Buttons -->
-    <string name="find_outfit">Find Outfit!</string>
-
-    <!-- Messages -->
+    <!-- Main Activity -->
     <string name="welcome">Welcome to Smart Attire!</string>
+
+    <string name="find_outfit">Find My Outfit!</string>
+
+    <!-- Clothes Item Activity -->
+    <string name="title_activity_clothes_items">ClothesItemsActivity</string>
+
+    <string-array name="clothes_item_array">
+        <item>Shirt</item>
+        <item>Pants</item>
+        <item>Shoes</item>
+    </string-array>
+
 </resources>
