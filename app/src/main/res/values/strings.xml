@@ -1,0 +1,16 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Smart Attire</string>
+
+    <!-- Menu Names -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Buttons -->
+    <string name="find_outfit">Find Outfit!</string>
+
+    <!-- Messages -->
+    <string name="welcome">Welcome to Smart Attire!</string>
+</resources>
