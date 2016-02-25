@@ -1,11 +1,11 @@
-package com.andersbuck.smartattire;
+package com.andersbuck.smartattire.activity;
 
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
-public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public class ClothesSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
 
     @Override
