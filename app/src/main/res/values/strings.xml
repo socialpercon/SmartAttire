@@ -21,4 +21,6 @@
         <item>Shoes</item>
     </string-array>
 
+    <string name="list_title">List Title</string>
+
 </resources>
