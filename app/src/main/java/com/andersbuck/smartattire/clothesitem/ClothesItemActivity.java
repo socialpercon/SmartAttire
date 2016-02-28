@@ -40,7 +40,7 @@ public class ClothesItemActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        this.loadScreenComponents();
+        this.loadScreenViews();
         this.loadClothesSpinner();
         this.setListViewOnClick();
     }
@@ -77,7 +77,6 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         String selectedItem = (String) spinner.getSelectedItem();
         this.loadClothesItemList(selectedItem);
-        
     }
 
     private void setListViewOnClick() {
@@ -137,7 +136,7 @@ public class ClothesItemActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(clothesSpinnerListener);
     }
 
-    private void loadScreenComponents() {
+    private void loadScreenViews() {
 
         spinner = (Spinner) findViewById(R.id.spnClothesItem);
         itemListView = (ListView) findViewById(R.id.itemListView);

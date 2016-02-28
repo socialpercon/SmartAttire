@@ -15,15 +15,15 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/spnrShirt"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
-        android:layout_below="@+id/spinner"
+        android:id="@+id/spnrPants"
+        android:layout_below="@+id/spnrShirt"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button2"
-        android:layout_below="@+id/spinner2"
+        android:layout_below="@+id/spnrPants"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

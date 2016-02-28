@@ -35,29 +35,4 @@ public class ClothesSpinnerListener implements AdapterView.OnItemSelectedListene
     public void onNothingSelected(AdapterView<?> parent) {
         Log.i(Const.APP_NAME, "Nothing selected");
     }
-
-//    protected void loadClothesItemList(String selectedItem) {
-//
-//        List<? extends SugarRecord> items = null;
-//
-//        switch (selectedItem) {
-//            case "Shirt":
-//                Log.i(Const.APP_NAME, "Loaded Shirt List");
-//                items = ShirtItem.listAll(ShirtItem.class);
-//                break;
-//            case "Pants":
-//                Log.i(Const.APP_NAME, "Loaded Pants List");
-//                items = PantsItem.listAll(PantsItem.class);
-//                break;
-//            default:
-//                break;
-//        }
-//
-//        if (items == null) {
-//            items = new ArrayList<>();
-//        }
-//        ListView itemListView = clothesItemActivity.getItemListView();
-//        ArrayAdapter<? extends SugarRecord> listAdapter = new ArrayAdapter<>(clothesItemActivity, android.R.layout.simple_list_item_1, items);
-//        itemListView.setAdapter(listAdapter);
-//    }
 }
