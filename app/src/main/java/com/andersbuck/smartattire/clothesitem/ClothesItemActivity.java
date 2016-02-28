@@ -12,9 +12,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.andersbuck.smartattire.R;
+import com.andersbuck.smartattire.pojo.PantsItem;
 import com.andersbuck.smartattire.pojo.ShirtItem;
 import com.andersbuck.smartattire.util.Const;
 import com.orm.SugarContext;
+import com.orm.SugarRecord;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClothesItemActivity extends AppCompatActivity {
 
@@ -37,10 +42,49 @@ public class ClothesItemActivity extends AppCompatActivity {
 
     public void addItem(View view) {
 
-        String shirtName = editText.getText().toString();
-        ShirtItem shirtItem = new ShirtItem();
-        shirtItem.setName(shirtName);
-        ShirtItem.save(shirtItem);
+        String selectedItem = (String) spinner.getSelectedItem();
+
+        String itemName = editText.getText().toString();
+
+        switch (selectedItem) {
+            case "Shirt":
+                ShirtItem shirtItem = new ShirtItem(itemName);
+                shirtItem.save();
+                break;
+            case "Pants":
+                PantsItem pantsItem = new PantsItem(itemName);
+                pantsItem.save();
+                break;
+            default:
+                break;
+        }
+
+        this.loadClothesItemList(selectedItem);
+    }
+
+    protected void loadClothesItemList(String selectedItem) {
+
+        List<? extends SugarRecord> items = null;
+
+        switch (selectedItem) {
+            case "Shirt":
+                Log.i(Const.APP_NAME, "Loaded Shirt List");
+                items = ShirtItem.listAll(ShirtItem.class);
+                break;
+            case "Pants":
+                Log.i(Const.APP_NAME, "Loaded Pants List");
+                items = PantsItem.listAll(PantsItem.class);
+                break;
+            default:
+                break;
+        }
+
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+
+        ArrayAdapter<? extends SugarRecord> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        itemListView.setAdapter(listAdapter);
     }
 
     private void loadClothesSpinner() {
