@@ -1,8 +1,8 @@
-package com.andersbuck.smartattire.pojo;
+package com.andersbuck.smartattire.db;
 
 import com.orm.SugarRecord;
 
-public class ShirtItem extends SugarRecord {
+public class ShirtItem extends SugarRecord implements IRecord {
 
     private String name;
 

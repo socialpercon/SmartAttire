@@ -1,16 +1,19 @@
-package com.andersbuck.smartattire.pojo;
+package com.andersbuck.smartattire.db;
 
 import com.orm.SugarRecord;
 
-public class PantsItem extends SugarRecord {
+public class OutfitItem extends SugarRecord {
 
     private String name;
+    private ShirtItem shirt;
+    private PantsItem pants;
 
-    public PantsItem() {
+    public OutfitItem() {
     }
 
-    public PantsItem(String name) {
-        this.name = name;
+    public OutfitItem(ShirtItem shirt, PantsItem pants) {
+        this.shirt = shirt;
+        this.pants = pants;
     }
 
     @Override
@@ -19,7 +22,9 @@ public class PantsItem extends SugarRecord {
 
         sb.append(getId());
         sb.append(" : ");
-        sb.append(name);
+        sb.append(shirt);
+        sb.append(" - ");
+        sb.append(pants);
 
         return sb.toString();
     }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -12,8 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.andersbuck.smartattire.R;
-import com.andersbuck.smartattire.pojo.PantsItem;
-import com.andersbuck.smartattire.pojo.ShirtItem;
+import com.andersbuck.smartattire.db.IRecord;
+import com.andersbuck.smartattire.db.PantsItem;
+import com.andersbuck.smartattire.db.ShirtItem;
 import com.andersbuck.smartattire.util.Const;
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
@@ -27,6 +29,8 @@ public class ClothesItemActivity extends AppCompatActivity {
     private ListView itemListView;
     private EditText editText;
     private TextView textView;
+    private IRecord item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(Const.APP_NAME, "ClothesItemActivity");
@@ -38,6 +42,7 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         this.loadScreenComponents();
         this.loadClothesSpinner();
+        this.setListViewOnClick();
     }
 
     public void addItem(View view) {
@@ -46,38 +51,71 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         String itemName = editText.getText().toString();
 
+        IRecord clothesItem = null;
+
         switch (selectedItem) {
             case "Shirt":
-                ShirtItem shirtItem = new ShirtItem(itemName);
-                shirtItem.save();
+                Log.i(Const.APP_NAME, "Saving Shirt Item");
+                clothesItem = new ShirtItem(itemName);
                 break;
             case "Pants":
-                PantsItem pantsItem = new PantsItem(itemName);
-                pantsItem.save();
+                Log.i(Const.APP_NAME, "Saving Pants Item");
+                clothesItem = new PantsItem(itemName);
                 break;
             default:
                 break;
         }
+
+        SugarRecord.save(clothesItem);
 
         this.loadClothesItemList(selectedItem);
     }
 
+    public void deleteItem(View view) {
+
+        SugarRecord.delete(item);
+
+        String selectedItem = (String) spinner.getSelectedItem();
+        this.loadClothesItemList(selectedItem);
+        
+    }
+
+    private void setListViewOnClick() {
+
+        itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(Const.APP_NAME, "List view item clicked");
+                IRecord selectedItem = (IRecord) itemListView.getItemAtPosition(position);
+
+                TextView textView = (TextView) findViewById(R.id.textView3);
+
+                textView.setText(selectedItem.getId().toString());
+
+                ClothesItemActivity.this.item = selectedItem;
+            }
+        });
+    }
+
     protected void loadClothesItemList(String selectedItem) {
 
-        List<? extends SugarRecord> items = null;
+        Class<? extends SugarRecord> clazz = null;
+        List<? extends SugarRecord> items;
 
         switch (selectedItem) {
             case "Shirt":
-                Log.i(Const.APP_NAME, "Loaded Shirt List");
-                items = ShirtItem.listAll(ShirtItem.class);
+                Log.i(Const.APP_NAME, "Loading Shirt List");
+                clazz = ShirtItem.class;
                 break;
             case "Pants":
-                Log.i(Const.APP_NAME, "Loaded Pants List");
-                items = PantsItem.listAll(PantsItem.class);
+                Log.i(Const.APP_NAME, "Loading Pants List");
+                clazz = PantsItem.class;
                 break;
             default:
                 break;
         }
+
+        items = SugarRecord.listAll(clazz);
 
         if (items == null) {
             items = new ArrayList<>();
