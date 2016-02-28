@@ -1,4 +1,4 @@
-package com.andersbuck.smartattire.activity;
+package com.andersbuck.smartattire.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +16,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.andersbuck.smartattire.R;
+import com.andersbuck.smartattire.clothesitem.ClothesItemActivity;
+import com.andersbuck.smartattire.outfit.OutfitActivity;
+import com.andersbuck.smartattire.util.Const;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("SmartAttire", "MainActivity");
+        Log.i(Const.APP_NAME, "MainActivity");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -104,7 +107,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void navToManage(View view) {
+    public void navToManageOutfit(View view) {
+        Intent intent = new Intent(this, OutfitActivity.class);
+        startActivity(intent);
+    }
+
+    public void navToManageClothes(View view) {
 
         Intent intent = new Intent(this, ClothesItemActivity.class);
         startActivity(intent);

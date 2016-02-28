@@ -1,4 +1,4 @@
-package com.andersbuck.smartattire.activity;
+package com.andersbuck.smartattire.clothesitem;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +13,8 @@ import android.widget.TextView;
 
 import com.andersbuck.smartattire.R;
 import com.andersbuck.smartattire.pojo.ShirtItem;
+import com.andersbuck.smartattire.util.Const;
 import com.orm.SugarContext;
-
-import java.util.List;
 
 public class ClothesItemActivity extends AppCompatActivity {
 
@@ -23,10 +22,9 @@ public class ClothesItemActivity extends AppCompatActivity {
     private ListView itemListView;
     private EditText editText;
     private TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("SmartAttire", "ClothesItemActivity");
+        Log.i(Const.APP_NAME, "ClothesItemActivity");
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
         setContentView(R.layout.activity_clothes_items);
@@ -35,7 +33,6 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         this.loadScreenComponents();
         this.loadClothesSpinner();
-        this.loadClothesItemList();
     }
 
     public void addItem(View view) {
@@ -44,13 +41,11 @@ public class ClothesItemActivity extends AppCompatActivity {
         ShirtItem shirtItem = new ShirtItem();
         shirtItem.setName(shirtName);
         ShirtItem.save(shirtItem);
-
-        loadClothesItemList();
     }
 
     private void loadClothesSpinner() {
 
-        ClothesSpinnerListener clothesSpinnerListener = new ClothesSpinnerListener(textView);
+        ClothesSpinnerListener clothesSpinnerListener = new ClothesSpinnerListener(this);
 
         ArrayAdapter<CharSequence> spnrAdapter = ArrayAdapter.createFromResource(this,
                 R.array.clothes_item_array, android.R.layout.simple_spinner_item);
@@ -58,14 +53,6 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         spinner.setAdapter(spnrAdapter);
         spinner.setOnItemSelectedListener(clothesSpinnerListener);
-    }
-
-    private void loadClothesItemList() {
-
-        List<ShirtItem> shirtItems = ShirtItem.listAll(ShirtItem.class);
-
-        ArrayAdapter<ShirtItem> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shirtItems);
-        itemListView.setAdapter(listAdapter);
     }
 
     private void loadScreenComponents() {
@@ -80,5 +67,21 @@ public class ClothesItemActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SugarContext.terminate();
+    }
+
+    public Spinner getSpinner() {
+        return spinner;
+    }
+
+    public ListView getItemListView() {
+        return itemListView;
+    }
+
+    public EditText getEditText() {
+        return editText;
+    }
+
+    public TextView getTextView() {
+        return textView;
     }
 }

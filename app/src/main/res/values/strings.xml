@@ -22,5 +22,6 @@
     </string-array>
 
     <string name="list_title">List Title</string>
+    <string name="title_activity_outfit">OutfitActivity</string>
 
 </resources>
