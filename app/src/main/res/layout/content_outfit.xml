@@ -30,8 +30,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
+        android:text="Make Outfit"
+        android:onClick="createOutfit"
+        android:id="@+id/btnMakeOutfit"
         android:layout_below="@+id/spnrPants"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -40,16 +41,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView2"
-        android:layout_alignBottom="@+id/button2"
+        android:text="All Outfits"
+        android:id="@+id/txtAllOutfits"
+        android:layout_alignBottom="@+id/btnMakeOutfit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/textView2"
+        android:id="@+id/lstOutfits"
+        android:layout_below="@+id/txtAllOutfits"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

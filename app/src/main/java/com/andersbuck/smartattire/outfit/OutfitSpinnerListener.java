@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.andersbuck.smartattire.util.Const;
+import com.andersbuck.smartattire.util.Constants;
 
 public class OutfitSpinnerListener implements AdapterView.OnItemSelectedListener {
 
@@ -18,7 +18,7 @@ public class OutfitSpinnerListener implements AdapterView.OnItemSelectedListener
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         String selectedItem = (String) parent.getItemAtPosition(position);
-        Log.d(Const.APP_NAME, "Selected Item: " + selectedItem);
+        Log.d(Constants.APP_NAME, "Selected Item: " + selectedItem);
 
 //        clothesItemActivity.loadClothesItemList(selectedItem);
 
@@ -32,6 +32,6 @@ public class OutfitSpinnerListener implements AdapterView.OnItemSelectedListener
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Log.i(Const.APP_NAME, "Nothing selected");
+        Log.i(Constants.APP_NAME, "Nothing selected");
     }
 }

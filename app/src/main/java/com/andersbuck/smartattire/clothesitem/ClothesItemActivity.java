@@ -16,7 +16,7 @@ import com.andersbuck.smartattire.R;
 import com.andersbuck.smartattire.db.IRecord;
 import com.andersbuck.smartattire.db.PantsItem;
 import com.andersbuck.smartattire.db.ShirtItem;
-import com.andersbuck.smartattire.util.Const;
+import com.andersbuck.smartattire.util.Constants;
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
 
@@ -33,7 +33,7 @@ public class ClothesItemActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(Const.APP_NAME, "ClothesItemActivity");
+        Log.i(Constants.APP_NAME, "ClothesItemActivity");
         super.onCreate(savedInstanceState);
         SugarContext.init(this);
         setContentView(R.layout.activity_clothes_items);
@@ -55,11 +55,11 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         switch (selectedItem) {
             case "Shirt":
-                Log.i(Const.APP_NAME, "Saving Shirt Item");
+                Log.i(Constants.APP_NAME, "Saving Shirt Item");
                 clothesItem = new ShirtItem(itemName);
                 break;
             case "Pants":
-                Log.i(Const.APP_NAME, "Saving Pants Item");
+                Log.i(Constants.APP_NAME, "Saving Pants Item");
                 clothesItem = new PantsItem(itemName);
                 break;
             default:
@@ -84,7 +84,7 @@ public class ClothesItemActivity extends AppCompatActivity {
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i(Const.APP_NAME, "List view item clicked");
+                Log.i(Constants.APP_NAME, "List view item clicked");
                 IRecord selectedItem = (IRecord) itemListView.getItemAtPosition(position);
 
                 TextView textView = (TextView) findViewById(R.id.textView3);
@@ -103,11 +103,11 @@ public class ClothesItemActivity extends AppCompatActivity {
 
         switch (selectedItem) {
             case "Shirt":
-                Log.i(Const.APP_NAME, "Loading Shirt List");
+                Log.i(Constants.APP_NAME, "Loading Shirt List");
                 clazz = ShirtItem.class;
                 break;
             case "Pants":
-                Log.i(Const.APP_NAME, "Loading Pants List");
+                Log.i(Constants.APP_NAME, "Loading Pants List");
                 clazz = PantsItem.class;
                 break;
             default:

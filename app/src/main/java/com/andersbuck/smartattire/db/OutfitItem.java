@@ -2,7 +2,7 @@ package com.andersbuck.smartattire.db;
 
 import com.orm.SugarRecord;
 
-public class OutfitItem extends SugarRecord {
+public class OutfitItem extends SugarRecord implements IRecord {
 
     private String name;
     private ShirtItem shirt;

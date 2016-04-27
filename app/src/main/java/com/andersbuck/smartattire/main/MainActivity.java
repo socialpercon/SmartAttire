@@ -18,20 +18,21 @@ import android.view.View;
 import com.andersbuck.smartattire.R;
 import com.andersbuck.smartattire.clothesitem.ClothesItemActivity;
 import com.andersbuck.smartattire.outfit.OutfitActivity;
-import com.andersbuck.smartattire.util.Const;
+import com.andersbuck.smartattire.util.Constants;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(Const.APP_NAME, "MainActivity");
+        Log.i(Constants.APP_NAME, "MainActivity");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // TODO: 4/26/16 This is the floating button on the main screen, best remove it or do something with it. 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // TODO: 4/26/16 Implement menu drawer. 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
